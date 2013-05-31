@@ -70,9 +70,9 @@ class views_timeline_plugin_style_timeline extends views_plugin_style {
 			$result[$key]['date'] = $entity->field_timeline_date['und']['0']['value'];
 			
 			$result[$key]['image']['alt'] = $entity->field_image['und']['0']['alt'];
-			$result[$key]['image']['src'] = $entity->field_image['und']['0']['uri'];
+			$result[$key]['image']['uri'] = $entity->field_image['und']['0']['uri'];
 			
-			$result[$key]['image']['captain'] = $entity->field_timeline_caption_text['und']['0']['value'];
+			$result[$key]['image']['caption'] = $entity->field_timeline_caption_text['und']['0']['value'];
 			
 
 			

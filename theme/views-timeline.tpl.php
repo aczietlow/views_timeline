@@ -1,6 +1,6 @@
 <div class="debug">
 <pre>
-<?php dsm($node); ?>
+<?php dsm($result); ?>
 </pre>
 </div>
 ------------
