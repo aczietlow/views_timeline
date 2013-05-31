@@ -54,19 +54,33 @@ class views_timeline_plugin_style_timeline extends views_plugin_style {
 	
 	function render() {
 		$view = $this->view;
-		$result = $this->view->result;
-		//debug($result[0]);
+		$result = array();
 		
-		$test_variables = array(
-			'title' => 'dummy title',
-			'desc' => 'dummy desc',
-			'image' => array(
-				'src' => '/path/to/thing/',
-				'captain' => 'luke skywalker took this picture',
-			),
-		);
+		foreach($this->view->result as $key => $row) {
+			//@TODO create field mappings
+			//better way to access node field data?
+			$entity = $row->_field_data['nid']['entity'];
+			$result[$key]['debug'] = $entity;
+			
+			$result[$key]['title'] = $entity->title;
+			
+			$desc = $entity->body['und']['0']['value'];
+			$result[$key]['desc'] = strip_tags($desc);
+			
+			$result[$key]['date'] = $entity->field_timeline_date['und']['0']['value'];
+			
+			$result[$key]['image']['alt'] = $entity->field_image['und']['0']['alt'];
+			$result[$key]['image']['src'] = $entity->field_image['und']['0']['uri'];
+			
+			$result[$key]['image']['captain'] = $entity->field_timeline_caption_text['und']['0']['value'];
+			
+
+			
+			//debug($row);
+		}
 		
-		return theme('views_timeline', array('node' => $test_variables));
+		
+		return theme('views_timeline', array('node' => $result));
 		// Render fields to trigger rewriting and other field processing.
 		$this->view->style_plugin->render_fields($this->view->result);
 	}

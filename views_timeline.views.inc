@@ -27,7 +27,6 @@ function views_timeline_views_plugins() {
 					'uses row class' => FALSE,
 					'uses fields'     => TRUE,
 					'uses grouping' => FALSE,
-					
 				),
 			),
 		);
