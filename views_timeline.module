@@ -1,0 +1,16 @@
+<?php
+/**
+ * @file 
+ * Views timeline Integration, Theming, and libraries
+ */
+
+/**
+ * Implements hook_views_api().
+ * Will look for views plugin files in /sites/<your site>/modules/views_timeline.views.inc
+ */
+function views_timeline_views_api() {
+  return array(
+    'api' => '3',
+    'path' => drupal_get_path('module', 'views_timeline'),
+  );
+}

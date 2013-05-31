@@ -1,0 +1,7 @@
+name =  views timeline
+description = Creates a timeline display for views displays
+dependencies[] = views
+package = views
+core = 7.x
+
+files[] = views_timeline_plugin_style_timeline.inc
