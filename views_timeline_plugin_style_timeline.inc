@@ -80,7 +80,7 @@ class views_timeline_plugin_style_timeline extends views_plugin_style {
 		}
 		
 		
-		return theme('views_timeline', array('node' => $result));
+		return theme('views_timeline', array('result' => $result));
 		// Render fields to trigger rewriting and other field processing.
 		$this->view->style_plugin->render_fields($this->view->result);
 	}
