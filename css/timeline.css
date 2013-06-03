@@ -1,0 +1,235 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  background: #000; }
+
+.container {
+  margin: 0 auto;
+  overflow: auto;
+  width: 90%;
+  max-width: 960px; }
+
+.timelineContainer {
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  width: 100%; }
+  .timelineContainer .timelineControls {
+    position: relative;
+    top: 5em;
+    z-index: 999; }
+    .timelineContainer .timelineControls a {
+      background: #1b8f9f;
+      color: #fff;
+      padding: 10px;
+      text-decoration: none; }
+      .timelineContainer .timelineControls a.btnPrevious {
+        float: left;
+        margin-right: -35px; }
+      .timelineContainer .timelineControls a.btnNext {
+        float: right;
+        margin-left: -35px; }
+      .timelineContainer .timelineControls a:hover {
+        background: #c00;
+        -webkit-transition: all 0.25s ease;
+        -moz-transition: all 0.25s ease;
+        -o-transition: all 0.25s ease;
+        transition: all 0.25s ease; }
+  .timelineContainer .timelineWrapper {
+    overflow: hidden; }
+  .timelineContainer ol.timelineSelector {
+    background: #999;
+    -webkit-border-bottom-right-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    -moz-border-radius-bottomright: 10px;
+    -moz-border-radius-bottomleft: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color: #fff;
+    font: normal 10px/1 sans-serif;
+    margin: 0 auto;
+    overflow: auto;
+    padding: 0 10px;
+    position: relative;
+    text-align: center;
+    width: 75%;
+    z-index: 10; }
+    .timelineContainer ol.timelineSelector li {
+      display: inline-block;
+      _float: left; }
+      .timelineContainer ol.timelineSelector li a {
+        color: #fff;
+        display: block;
+        padding: 10px 15px;
+        text-decoration: none; }
+        .timelineContainer ol.timelineSelector li a:hover {
+          background: #aaa;
+          font-weight: bold; }
+        .timelineContainer ol.timelineSelector li a.selected {
+          background: #c00;
+          font-weight: bold; }
+      .timelineContainer ol.timelineSelector li.prev, .timelineContainer ol.timelineSelector li.next {
+        color: #000;
+        display: none;
+        padding: 10px; }
+      .timelineContainer ol.timelineSelector li.disabled {
+        display: none; }
+  .timelineContainer ol.timelineSlider {
+    float: left;
+    height: 200px;
+    list-style: none;
+    margin: 0 -100% 0 0;
+    overflow: hidden;
+    padding: 0;
+    text-indent: 0; }
+    .timelineContainer ol.timelineSlider li {
+      background: #fff;
+      float: left;
+      height: 200px;
+      overflow: auto;
+      padding: 0 0 30px 0;
+      position: relative;
+      width: 200px;
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease; }
+      .timelineContainer ol.timelineSlider li .image {
+        display: block;
+        margin: 0 0 -5px;
+        padding: 0; }
+        .timelineContainer ol.timelineSlider li .image img {
+          width: 100%; }
+        .timelineContainer ol.timelineSlider li .image .caption {
+          display: none; }
+      .timelineContainer ol.timelineSlider li .text {
+        margin: 0;
+        overflow: auto;
+        padding: 10px; }
+        .timelineContainer ol.timelineSlider li .text h5.title {
+          color: #777;
+          font: normal 14px/1 sans-serif;
+          margin: 0 0 .5em; }
+        .timelineContainer ol.timelineSlider li .text h6.date {
+          font: bold 10px/1 sans-serif;
+          margin: 0 0 .25em; }
+        .timelineContainer ol.timelineSlider li .text p.desc {
+          color: #999;
+          display: none;
+          font: normal 11px/1.4 sans-serif; }
+      .timelineContainer ol.timelineSlider li:nth-child(even) {
+        background: #eee; }
+      .timelineContainer ol.timelineSlider li.active {
+        background: #22b6cb;
+        margin: 0;
+        padding: 0;
+        width: 500px;
+        z-index: 200;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease; }
+        .timelineContainer ol.timelineSlider li.active .image {
+          background: #1b8f9f;
+          display: block;
+          float: left;
+          height: 200px;
+          overflow: hidden;
+          position: relative;
+          text-align: center;
+          width: 40%; }
+          .timelineContainer ol.timelineSlider li.active .image img {
+            display: block;
+            margin: -10% -50% 0;
+            width: 400px; }
+          .timelineContainer ol.timelineSlider li.active .image .caption {
+            background: rgba(0, 0, 0, 0.5);
+            bottom: 0;
+            color: #fff;
+            display: block;
+            font: normal 8px/1 sans-serif;
+            margin: -2em 0 0;
+            padding: 2%;
+            position: absolute;
+            text-align: right;
+            text-transform: uppercase;
+            width: 97%; }
+        .timelineContainer ol.timelineSlider li.active .text {
+          color: #fff;
+          padding: 20px 50px 10px 10px; }
+          .timelineContainer ol.timelineSlider li.active .text h5.title {
+            color: #fff; }
+          .timelineContainer ol.timelineSlider li.active .text h6.date {
+            color: #fff;
+            padding: .25em 0 0; }
+          .timelineContainer ol.timelineSlider li.active .text p.desc {
+            clear: both;
+            color: #fff;
+            display: block; }
+      .timelineContainer ol.timelineSlider li:hover, .timelineContainer ol.timelineSlider li:nth-child(even):hover {
+        background: #136874;
+        color: #fff; }
+        .timelineContainer ol.timelineSlider li:hover *, .timelineContainer ol.timelineSlider li:nth-child(even):hover * {
+          color: #fff !important; }
+
+@media screen and (max-width: 720px) {
+  .timelineContainer ol.timelineSelector {
+    -webkit-border-bottom-right-radius: 0;
+    -webkit-border-bottom-left-radius: 0;
+    -moz-border-radius-bottomright: 0;
+    -moz-border-radius-bottomleft: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    padding: 0;
+    width: 100%; } }
+@media screen and (max-width: 480px) {
+  .container {
+    width: 100%; }
+    .container .timelineContainer ol.timelineSlider li {
+      overflow: visible;
+      width: 100%;
+      max-width: 480px; }
+      .container .timelineContainer ol.timelineSlider li .image {
+        display: block;
+        height: 100px;
+        overflow: hidden;
+        width: 100%; }
+        .container .timelineContainer ol.timelineSlider li .image img {
+          display: block;
+          margin: -15% auto 0;
+          width: 100% !important; }
+      .container .timelineContainer ol.timelineSlider li.active {
+        background: #22b6cb;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        z-index: 200;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease; }
+        .container .timelineContainer ol.timelineSlider li.active .image {
+          float: none;
+          height: 100px;
+          overflow: hidden;
+          width: 100%; }
+          .container .timelineContainer ol.timelineSlider li.active .image img {
+            display: block;
+            margin: 0 auto;
+            width: 100% !important; }
+          .container .timelineContainer ol.timelineSlider li.active .image .caption {
+            display: none; }
+        .container .timelineContainer ol.timelineSlider li.active .text {
+          color: #fff;
+          padding: 20px 50px 10px 10px; }
+          .container .timelineContainer ol.timelineSlider li.active .text h5.title {
+            color: #fff; }
+          .container .timelineContainer ol.timelineSlider li.active .text h6.date {
+            color: #fff;
+            padding: .25em 0 0; }
+          .container .timelineContainer ol.timelineSlider li.active .text p.desc {
+            clear: both;
+            color: #fff;
+            display: block; } }

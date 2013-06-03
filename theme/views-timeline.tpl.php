@@ -1,12 +1,9 @@
 <div class="debug">
 <pre>
-<?php dsm($result); ?>
 </pre>
 </div>
-------------
 <div class="container">
 			<div class="timelineContainer">
-				
 				<div class="timelineControls">
 					<a href="#" class="btnPrevious">&larr;</a>
 					<a href="#" class="btnNext">&rarr;</a>
@@ -17,7 +14,8 @@
 						<?php foreach($result as $key => $event) :?>
 						<li class="eventSlide" id="year1785">
 							<div class="image">
-								<img src="<?php print $event['image']['uri']; ?>" alt="<?php print $event['image']['alt']; ?>" />
+							
+								<img src="<?php print file_create_url($event['image']['uri']); ?>" alt="<?php print $event['image']['alt']; ?> IMAGE" />
 								<p class="caption">
 									<?php print $event['image']['caption']; ?>
 								</p>
@@ -53,44 +51,5 @@
 				</ol><!-- /.timelineSelector-->
 			</div><!-- /.timelineContainer -->
 		</div><!-- /.container -->
-		
-		<!--  
-		<script src="jquery.easing.1.3.js"></script>
-		<script>
-			
-			// Timeline Controls
-			$('.timelineControls a.btnPrevious').click(function () { 
-				var leftPos = $('.timelineWrapper').scrollLeft();
-				$('.timelineWrapper').animate({scrollLeft: leftPos - 200}, 800);
-			});
-			$('.timelineControls a.btnNext').click(function () { 
-				var leftPos = $('.timelineWrapper').scrollLeft();
-				$( '.timelineWrapper' ).animate({scrollLeft: leftPos + 200}, 800);
-			});
-			
-			// Timeline Slide Width
-			$('.eventSlide').click(function() {
-				$('.eventSlide.active').not(this).removeClass('active');
-				$(this).toggleClass('active');
-				$(this).toggleClass('');
-			});
-			-->
-			
-			
-			// Almost works correctly... Sigh.
-			$('.timelineSelector a').click(function () {
-				
-				//reset and highlight the clicked link
-				$('.timelineSelector a').removeClass('selected');
-				$(this).addClass('selected');
-				
-				//grab the current item
-				current = $(this);
-				
-				//scroll it to the destination
-				$('#timelineWrapper').scrollTo($(this).attr('href'), 800);
-				//cancel the link default behavior
-				return false;
-			});
 			
 		</script>
