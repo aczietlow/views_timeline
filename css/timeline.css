@@ -19,7 +19,7 @@ body {
   .timelineContainer .timelineControls {
     position: relative;
     top: 5em;
-    z-index: 999; }
+    z-index: 10; }
     .timelineContainer .timelineControls a {
       background: #1b8f9f;
       color: #fff;

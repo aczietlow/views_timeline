@@ -1,5 +1,6 @@
-<div class="debug">
+<div class="debug" id="debug">
 <pre>
+test
 </pre>
 </div>
 <div class="container">
@@ -12,7 +13,7 @@
 				<div class="timelineWrapper">
 					<ol class="timelineSlider">
 						<?php foreach($result as $key => $event) :?>
-						<li class="eventSlide" id="year1785">
+						<li class="eventSlide" id="year<?php echo $event['date']; ?> ">
 							<div class="image">
 							
 								<img src="<?php print file_create_url($event['image']['uri']); ?>" alt="<?php print $event['image']['alt']; ?> IMAGE" />
