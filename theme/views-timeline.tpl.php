@@ -14,7 +14,7 @@ test
 					<ol class="timelineSlider">
 					<?php $yearNav = ''; ?>
 						<?php foreach($result as $key => $event) :?>
-						<li class="eventSlide" id="year<?php echo $event['date']; ?> ">
+						<li class="eventSlide year<?php echo $event['date'];?>" id="year<?php echo $event['date'];?>" >
 							<div class="image">
 							
 								<img src="<?php print file_create_url($event['image']['uri']); ?>" alt="<?php print $event['image']['alt']; ?> IMAGE" />
@@ -30,7 +30,7 @@ test
 								</p>
 							</div>
 						</li>
-						<?php $yearNav .= "<li><a href='#year" . $event['date'] . "'>" . $event['date'] ."</a></li>\n" ;?>
+						<?php $yearNav .= "<li><a href=''>" . $event['date'] ."</a></li>\n" ;?>
 						<?php endforeach;?>
 						
 					</ol>

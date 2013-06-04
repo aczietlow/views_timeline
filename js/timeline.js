@@ -2,15 +2,22 @@
 (function ($) {
 	Drupal.behaviors.views_timeline = {
 		attach: function(context, settings) {
+			var results = $('li.eventSlide');
+				index = 0;
+				visible = 4;
+				endIndex = (results.length) - 1;
+				scrollPos = 0;
 			
 			$('.timelineControls a.btnPrevious').click(function () { 
 				var leftPos = $('.timelineWrapper').scrollLeft();
 				$('.timelineWrapper').animate({scrollLeft: leftPos - 200}, 800);
+				return false;
 			});
 			
 			$('.timelineControls a.btnNext').click(function () { 
 				var leftPos = $('.timelineWrapper').scrollLeft();
 				$( '.timelineWrapper' ).animate({scrollLeft: leftPos + 200}, 800);
+				return false;s
 			});
 			
 			// Timeline Slide Width
@@ -22,6 +29,14 @@
 			
 			// Almost works correctly... Sigh.
 			$('.timelineSelector a').click(function () {
+				date = $(this).html();
+				
+				events = $('.eventSlide');
+				event = $('li.eventSlide').filter('.year' + date);
+//				leftPos = $('.timelineWrapper').scrollLeft();
+				currentIndex = events.index(event);
+				scrollTo = currentIndex * 200;
+				$( '.timelineWrapper' ).animate({scrollLeft: scrollTo}, 800);
 				
 				//reset and highlight the clicked link
 				$('.timelineSelector a').removeClass('selected');
@@ -31,7 +46,7 @@
 				current = $(this);
 				
 				//scroll it to the destination
-				$('#timelineWrapper').scrollTo($(this).attr('href'), 800);
+				//$('#timelineWrapper').scrollTo($(this).attr('href'), 800);
 				//cancel the link default behavior
 				return false;
 			});
