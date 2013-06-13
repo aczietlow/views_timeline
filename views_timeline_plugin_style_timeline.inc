@@ -12,10 +12,13 @@ class views_timeline_plugin_style_timeline extends views_plugin_style {
 	 function option_definition() {
 		$options = parent::option_definition();
 		
-		$options['timeline_theme']['width'] = array('default' => '100');
-// 		$options['timeline_theme']['width_unit'] = array('default' => '1');
-// 		$options['timeline_theme']['height'] = array('default' => '500');
-// 		$options['timeline_theme']['height_unit'] = array('default' => '0');
+		$options['timeline_theme']['width'] = array('default' => '300');
+		
+		$options['timeline_fields']['title'] = array('default' => 0);
+		$options['timeline_fields']['description'] = array('default' => 0);
+		$options['timeline_fields']['date'] = array('default' => 0);
+		$options['timeline_fields']['image'] = array('default' => 0);
+		$options['timeline_fields']['image_caption'] = array('default' => 0);
 		
 		return $options;
 	}
@@ -35,6 +38,51 @@ class views_timeline_plugin_style_timeline extends views_plugin_style {
 			return;
 		}
 		
+		foreach($handlers as $field => $handler) {
+			$field_name[$field] = $handler->ui_name();
+		}
+		
+		$form['timeline_fields'] = array(
+			'#type' => 'fieldset',
+			'#title' => t('Fields'),
+			'#description' => t('Select fields to be used for the timeline widgets'),
+			'#collapsible' => TRUE,
+			'#collapsed' => FALSE,	
+		);
+		
+		$form['timeline_fields']['title'] = array(
+			'#type' => 'select',
+			'#title' => t('Title'),
+			'#description' => t('Plain text title'),
+			'#options' => $field_name,
+		);
+		$form['timeline_fields']['description'] = array(
+			'#type' => 'select',
+			'#title' => t('Description'),
+			'#description' => t('A short summary of the event'),
+			'#options' => $field_name,
+		);
+		$form['timeline_fields']['date'] = array(
+			'#type' => 'select',
+			'#title' => t('Date'),
+			'#description' => t('The date of the event'),
+			'#options' => $field_name,
+		);
+		$form['timeline_fields']['image'] = array(
+			'#type' => 'select',
+			'#title' => t('Image'),
+			'#description' => t('Media source for image'),
+			'#options' => $field_name,
+		);
+		$form['timeline_fields']['image caption'] = array(
+			'#type' => 'select',
+			'#title' => t('Image Caption'),
+			'#description' => t('Credit for media source'),
+			'#options' => $field_name,
+		);
+		
+		
+		
 		$form['timeline_theme'] = array(
 			'#type' => 'fieldset',
 			'#title' => t('width'),
@@ -53,6 +101,15 @@ class views_timeline_plugin_style_timeline extends views_plugin_style {
 	}
 	
 	function render() {
+		//debug
+		$handlers = $this->display->handler->get_handlers('field');
+		
+		
+		
+		
+		
+		//end debug
+		
 		$view = $this->view;
 		$result = array();
 		
