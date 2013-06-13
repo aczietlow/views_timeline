@@ -17,7 +17,7 @@
 			$('.timelineControls a.btnNext').click(function () { 
 				var leftPos = $('.timelineWrapper').scrollLeft();
 				$( '.timelineWrapper' ).animate({scrollLeft: leftPos + 200}, 800);
-				return false;s
+				return false;
 			});
 			
 			// Timeline Slide Width
@@ -30,10 +30,9 @@
 			// Almost works correctly... Sigh.
 			$('.timelineSelector a').click(function () {
 				date = $(this).html();
-				
 				events = $('.eventSlide');
 				event = $('li.eventSlide').filter('.year' + date);
-//				leftPos = $('.timelineWrapper').scrollLeft();
+				
 				currentIndex = events.index(event);
 				scrollTo = currentIndex * 200;
 				$( '.timelineWrapper' ).animate({scrollLeft: scrollTo}, 800);
