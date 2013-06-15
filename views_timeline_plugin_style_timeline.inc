@@ -38,8 +38,57 @@ class views_timeline_plugin_style_timeline extends views_plugin_style {
 			return;
 		}
 		
-		foreach($handlers as $field => $handler) {
-			$field_name[$field] = $handler->ui_name();
+		
+		
+		$text_sources = array('0' => t('None'));
+		$date_sources = array('0' => t('None'));
+		$image_sources = array('0' => t('None'));
+		
+		//load ctools plugins
+		ctools_include('plugins');
+		$text_sources = ctools_get_plugins('views_timeline', 'text_sources');
+// 		$date_sources = ctools_get_plugins('views_timeline', 'date_sources');
+		$image_sources = ctools_get_plugins('views_timeline', 'image_sources');
+		
+		foreach ($handlers as $field => $handler) {
+			$field_names[$field] = $handler->ui_name();
+			
+			if (isset($handler->definition['field_name'])) {
+				$field_name = $handler->definition['field_name'];
+				$field_info = field_info_field($field_name);
+			}
+			
+			if ($field == 'body') {
+				dsm($handler);
+			}
+			
+			
+			//check for available text fields
+			foreach ($text_sources as $source) {
+				if (get_class($handler) == $source['handler_name']) {
+					if ((isset($field_info['type']) && $field_info['type'] == $source['field_type']) || $field == 'title') {
+						$text_fields[$field] = $field_names[$field];
+					}
+				}
+			}
+			
+			// check for available date fields
+// 			foreach ($text_sources as $source) {
+// 				if (get_class($handler) == $source['handler_name']) {
+// 					if (isset($field_info['type']) && $field_info['type'] == $source['field_type']) {
+// 						$text_fields[$field] = $field_names[$field];
+// 					}
+// 				}
+// 			}
+
+			//check for available image fields
+			foreach ($image_sources as $source) {
+				if (get_class($handler) == $source['handler_name']) {
+					if (isset($field_info['type']) && $field_info['type'] == $source['field_type']) {
+						$image_fields[$field] = $field_names[$field];
+					}
+				}
+			}
 		}
 		
 		$form['timeline_fields'] = array(
@@ -54,31 +103,31 @@ class views_timeline_plugin_style_timeline extends views_plugin_style {
 			'#type' => 'select',
 			'#title' => t('Title'),
 			'#description' => t('Plain text title'),
-			'#options' => $field_name,
+			'#options' => $text_fields,
 		);
 		$form['timeline_fields']['description'] = array(
 			'#type' => 'select',
 			'#title' => t('Description'),
 			'#description' => t('A short summary of the event'),
-			'#options' => $field_name,
+			'#options' => $text_fields,
 		);
 		$form['timeline_fields']['date'] = array(
 			'#type' => 'select',
 			'#title' => t('Date'),
 			'#description' => t('The date of the event'),
-			'#options' => $field_name,
+			'#options' => $field_names,
 		);
 		$form['timeline_fields']['image'] = array(
 			'#type' => 'select',
 			'#title' => t('Image'),
 			'#description' => t('Media source for image'),
-			'#options' => $field_name,
+			'#options' => $image_fields,
 		);
 		$form['timeline_fields']['image caption'] = array(
 			'#type' => 'select',
 			'#title' => t('Image Caption'),
 			'#description' => t('Credit for media source'),
-			'#options' => $field_name,
+			'#options' => $field_names,
 		);
 		
 		

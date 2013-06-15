@@ -14,3 +14,25 @@ function views_timeline_views_api() {
     'path' => drupal_get_path('module', 'views_timeline'),
   );
 }
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ *
+ * Plugin integration for date sources, image sources and timeline themes.
+ */
+function views_timeline_ctools_plugin_directory($module, $plugin) {
+	if ($module == 'views_timeline') {
+		return 'plugins/' . $plugin;
+	}
+}
+
+/**
+ * Implements hook_ctools_plugin_type().
+ */
+function views_timeline_ctools_plugin_type() {
+	return array(
+// 			'date_sources' => array(),
+			'text_sources' => array(),
+			'image_sources' => array(),
+	);
+}

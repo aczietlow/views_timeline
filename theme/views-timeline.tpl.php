@@ -1,6 +1,6 @@
 <div class="debug" id="debug">
 <pre>
-test
+<!-- Debug section -->
 </pre>
 </div>
 <div class="container">
